@@ -1,0 +1,49 @@
+{
+  "name": "telecom-resilience-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "CarrierOrg",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300"
+        }
+      }
+    }
+  },
+  "organizations": {
+    "CarrierOrg": {
+      "mspid": "CarrierMSP",
+      "peers": [
+        "peer0.carrier.example.com"
+      ],
+      "certificateAuthorities": [
+        "ca.carrier.example.com"
+      ]
+    }
+  },
+  "peers": {
+    "peer0.carrier.example.com": {
+      "url": "grpcs://localhost:9051",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/carrier.example.com/tlsca/tlsca.carrier.example.com-cert.pem"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.carrier.example.com",
+        "hostnameOverride": "peer0.carrier.example.com"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca.carrier.example.com": {
+      "url": "https://localhost:9054",
+      "caName": "ca-carrier",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/carrier.example.com/ca/ca.carrier.example.com-cert.pem"
+      },
+      "httpOptions": {
+        "verify": false
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: ../docker/gateway.Dockerfile
+    container_name: telecom_api_gateway
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api-gateway:/app/api_gateway
+      - ./models:/app/models
+    networks:
+      - telecom-mesh
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: ../docker/dashboard.Dockerfile
+    container_name: telecom_control_dash
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./dashboard:/app/dashboard
+    depends_on:
+      - api-gateway
+    networks:
+      - telecom-mesh
+
+networks:
+  telecom-mesh:
+    driver: bridge

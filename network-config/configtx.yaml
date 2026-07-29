@@ -1,0 +1,121 @@
+---
+Organizations:
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: crypto-config/ordererOrganizations/example.com/msp
+    Policies:
+      Reader:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writer:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admin:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+
+  - &OEMOrg
+    Name: OEMOrg
+    ID: OEMMSP
+    MSPDir: crypto-config/peerOrganizations/oem.example.com/msp
+    Policies:
+      Reader:
+        Type: Signature
+        Rule: "OR('OEMMSP.admin', 'OEMMSP.peer', 'OEMMSP.client')"
+      Writer:
+        Type: Signature
+        Rule: "OR('OEMMSP.admin', 'OEMMSP.client')"
+      Admin:
+        Type: Signature
+        Rule: "OR('OEMMSP.admin')"
+    AnchorPeers:
+      - Host: peer0.oem.example.com
+        Port: 7051
+
+  - &CarrierOrg
+    Name: CarrierOrg
+    ID: CarrierMSP
+    MSPDir: crypto-config/peerOrganizations/carrier.example.com/msp
+    Policies:
+      Reader:
+        Type: Signature
+        Rule: "OR('CarrierMSP.admin', 'CarrierMSP.peer', 'CarrierMSP.client')"
+      Writer:
+        Type: Signature
+        Rule: "OR('CarrierMSP.admin', 'CarrierMSP.client')"
+      Admin:
+        Type: Signature
+        Rule: "OR('CarrierMSP.admin')"
+    AnchorPeers:
+      - Host: peer0.carrier.example.com
+        Port: 9051
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Read:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Write:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admin:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+  Addresses:
+    - orderer.example.com:7050
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 100
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Profiles:
+  TwoOrgsChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *OEMOrg
+        - *CarrierOrg
+      Capabilities: *ApplicationCapabilities

@@ -1,0 +1,5 @@
+terminal type : 
+python -m streamlit run dashboard/app.py
+
+it will direct to the link "http://localhost:8501"
+
