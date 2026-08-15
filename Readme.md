@@ -1,103 +1,611 @@
-# Enterprise Blockchain-Based IMEI Provenance System
+# 🔐 IMEI Provenance Blockchain
 
-A production-grade, permissioned blockchain architecture designed to establish immutable device provenance, eliminate counterfeit telecommunications equipment infiltration, and secure cross-carrier device tracking infrastructure[cite: 1].
+<div align="center">
 
-This repository implements **Pillar 1 (The Cryptographic Trust Layer)** of a distributed telecommunications supply-chain resilience framework[cite: 1]. It functions as a secure identity anchor, providing clean, tamper-evident hardware asset lifecycle records to downstream analytics pipelines and Multi-Echelon Inventory Optimization (MEIO) models[cite: 1].
+## Blockchain-Based Device Provenance & Cryptographic Identity Verification
 
----
+**Executable technical prototype for trusted IMEI provenance, cryptographic integrity, lifecycle control, and security-event evidence**
 
-## 📰 Peer-Reviewed Publication & Reference
+![Status](https://img.shields.io/badge/Status-Technical%20Prototype-2563EB?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Crypto](https://img.shields.io/badge/Crypto-ECDSA%20%7C%20SHA--256%20%7C%20AES--256--GCM-7C3AED?style=for-the-badge)
+![Tests](https://img.shields.io/badge/Python%20Validation-9%20Passed-16A34A?style=for-the-badge)
 
-The theoretical framework, threat model, and performance metrics animating this architecture have been peer-reviewed and formally published in the *Silicon Valleys Journal*[cite: 1]. 
-
-- **Article Title:** Securing the Link: A Blockchain-Based IMEI Provenance System for Telecom Security[cite: 1]
-- **Author:** Lakshmanaprakash Murugesan[cite: 1]
-- **Publication Date:** December 1, 2025[cite: 1]
-- **Verified Publication Link:** https://siliconvalleysjournal.com/2025/12/01/securing-the-link-a-blockchain-based-imei-provenance-system-for-telecom-security/[cite: 1]
-
----
-
-## 🏗️ Technical Architecture & Ledger Protocols
-
-The platform architecture is divided into decoupled microservices running across a permissioned ledger network[cite: 1]:
-
-1. **Cryptographic Provenance Layer (/chaincode)**: Implements Go-based smart contracts running on an orchestrated Hyperledger Fabric v2.5 framework[cite: 1]. It enforces deterministic state changes across the entire asset lifecycle: from OEM manufacturing genesis, through distributor transfers and warehouse custody, to retail activation, blacklisting, and decommissioning[cite: 1].
-2. **Asymmetric Verification Middleware (/api-gateway)**: Enforces secure ingestion using digital signatures before transactions ever commit to the ledger, completely mitigating IMEI cloning, identity spoofing, and unauthorized data injection[cite: 1].
-3. **Off-Chain Encrypted Storage (/offchain-storage)**: Preserves carrier and regulatory data privacy standards by excluding all personally identifiable information (PII) from the shared state[cite: 1]. Large operational compliance records and repair logs are held in encrypted off-chain repositories; only their unique cryptographic SHA-256 hashes are appended to the blockchain ledger to maintain national-scale transaction finality[cite: 1].
-4. **Event-Streaming Pipeline (/event-streaming)**: A Kafka-compatible distributed messaging topology architected to normalize and ingest between 5 and 8 terabytes of transactional lifecycle data per month into a shared cloud data lake[cite: 1].
+</div>
 
 ---
 
-## 📁 Repository Directory Structure
+> [!IMPORTANT]
+> **Scope:** This repository is an active technical prototype/reference implementation of the IMEI-provenance module. It demonstrates technical design, implementation progress, cryptographic verification, reproducible validation, and evidence generation. It is **not presented as a production carrier deployment**.
 
-The workspace is organized into the following clean, modular layout[cite: 1]:
+## 📚 Related Publication
 
-imei-provenance-blockchain/
-├── api-gateway/       # FastAPI REST Controllers, security middleware, and configurations[cite: 1]
-├── chaincode/         # Go-based Hyperledger Fabric smart contracts and world state schemas[cite: 1]
-├── network-config/    # Multi-MSP governance profiles, Raft specs, and CA connections[cite: 1]
-├── event-streaming/   # Kafka pub/sub messaging channel producers, consumers, and sinks[cite: 1]
-├── offchain-storage/  # Document encryption handlers and SHA-256 hash routines[cite: 1]
-├── dashboard/         # Control Tower Streamlit UI displaying real-time tracking telemetry[cite: 1]
-├── models/            # Privacy-preserving Pydantic request models and SQL mappings[cite: 1]
-├── tests/             # Automated unit checks and security threat exploit simulation suites[cite: 1]
-└── docker/            # Container environment files and Kubernetes (EKS) templates[cite: 1]
+This repository implements and demonstrates selected technical mechanisms from:
+
+**Lakshmanaprakash Murugesan, “Securing the Link: A Blockchain-Based IMEI Provenance System for Telecom Security,” _Silicon Valleys Journal_, December 1, 2025.**
+
+**Publication:**  
+https://siliconvalleysjournal.com/2025/12/01/securing-the-link-a-blockchain-based-imei-provenance-system-for-telecom-security/
+
+The publication provides the broader architecture for permissioned IMEI provenance, manufacturer identity, lifecycle tracking, custody controls, API integration, event streaming, encrypted off-chain records, tamper detection, and monitoring. This repository provides the **inspectable implementation layer** for selected mechanisms from that architecture.
 
 ---
 
-## 🖥️ System Outputs & Generated Deliverables
+## ✨ At a Glance
 
-When the infrastructure is fully compiled and deployed via Docker, the system exposes three primary runtime outputs[cite: 1]:
+| Capability | Current prototype |
+|---|---|
+| IMEI validation | ✅ 15-digit + Luhn/check-digit validation |
+| Four-state authenticity model | ✅ `GENUINE / TAMPERED / UNKNOWN / INVALID` |
+| Hardcoded IMEI result rules | ✅ Removed |
+| Manufacturer signature verification | ✅ ECDSA P-256 |
+| Record integrity | ✅ SHA-256 comparison |
+| Off-chain encryption | ✅ AES-256-GCM |
+| Shared verification engine | ✅ API + dashboard |
+| Lifecycle controls | ✅ Go chaincode/reference logic |
+| MSP authorization concepts | ✅ OEM / Distributor / Carrier |
+| Event streaming | ✅ Kafka-compatible simulation |
+| Dashboard | ✅ Three-page Streamlit control tower |
+| Evidence generation | ✅ CSV / JSON / XML |
+| Python validation | ✅ 9 passed, 0 failed |
 
-### 1. The Interactive API Gateway Manager (FastAPI Swagger UI)
-- **Interface Access:** Accessible locally at http://localhost:8000/docs[cite: 1]
-- **Output Artifact:** A live web terminal hosting structured RESTful endpoints[cite: 1]. When executing an IMEI validation request, it outputs a strict, privacy-preserving cryptographic JSON data block tracking device custody history without exposing private customer information[cite: 1]:
+---
 
+## 🧭 Navigation
+
+- [Project Objective](#-project-objective)
+- [Four-State Verification Model](#-four-state-verification-model)
+- [System Architecture](#-system-architecture)
+- [Implemented Components](#-implemented-components)
+- [Streamlit Control Tower](#-streamlit-control-tower)
+- [Lifecycle & Fabric Logic](#-lifecycle--fabric-logic)
+- [Evidence & Validation](#-evidence--validation)
+- [Quick Start](#-quick-start--windows)
+- [Repository Structure](#-repository-structure)
+- [RFE Technical-Evidence Relevance](#-rfe-technical-evidence-relevance)
+
+# 🎯 Project Objective
+
+Telecommunications devices move through multiple organizations and lifecycle stages:
+
+```text
+Manufacturer
+    ↓
+Distributor
+    ↓
+Carrier
+    ↓
+Activation
+    ↓
+Blacklist / Service / Retirement
+```
+
+This prototype demonstrates a technical approach for answering four questions:
+
+1. **Is the IMEI structurally valid?**
+2. **Is the IMEI registered in the prototype provenance registry?**
+3. **Does the record pass cryptographic verification?**
+4. **Has the record been altered or otherwise failed an integrity check?**
+
+The implementation combines IMEI validation, manufacturer-signature verification, SHA-256 record integrity, lifecycle-state logic, encrypted off-chain storage, API verification, evidence generation, and operator visualization.
+
+# 🧠 Four-State Verification Model
+
+The **IMEI value itself never determines the result**.
+
+```mermaid
+flowchart TD
+    A[IMEI Submitted] --> B{Valid 15-digit IMEI<br/>and check digit?}
+    B -- No --> C[INVALID]
+    B -- Yes --> D{Record exists<br/>in prototype registry?}
+    D -- No --> E[UNKNOWN / NOT_REGISTERED]
+    D -- Yes --> F{Manufacturer signature valid?}
+    F -- No --> G[TAMPERED]
+    F -- Yes --> H{Current SHA-256 hash<br/>matches trusted anchor?}
+    H -- No --> G
+    H -- Yes --> I[GENUINE]
+```
+
+| Result | Meaning |
+|---|---|
+| 🟢 `GENUINE` | Registered record passes signature and integrity checks |
+| 🔴 `TAMPERED` | Registered record fails signature and/or integrity validation |
+| 🟡 `UNKNOWN` | Valid IMEI format, but no prototype registry record exists |
+| ⚪ `INVALID` | IMEI structure/check digit is invalid |
+
+> [!NOTE]
+> Synthetic GENUINE and TAMPERED fixtures are generated by `scripts/seed_demo_registry.py`. They are **data fixtures**, not hardcoded classification rules.
+
+# 🏗️ System Architecture
+
+```mermaid
+flowchart LR
+    A[Operator / Test Client] --> B[Streamlit UI]
+    A --> C[FastAPI Gateway]
+    B --> D[Shared Provenance Engine]
+    C --> D
+    D --> E[IMEI Validation]
+    D --> F[ECDSA Signature Verification]
+    D --> G[SHA-256 Integrity Check]
+    D --> H[Synthetic Device Registry]
+    G --> I[GENUINE / TAMPERED / UNKNOWN / INVALID]
+    I --> J[Verification Evidence]
+    I --> K[Security Evidence]
+    I --> L[Event-Streaming Simulation]
+    D --> M[AES-256-GCM Off-Chain Storage]
+    D --> N[Fabric Lifecycle / MSP Reference Logic]
+```
+
+# ⚙️ Implemented Components
+
+## 1. Shared Provenance Engine
+
+**Path:** `provenance_engine/`
+
+Both the API and dashboard use the same verification engine.
+
+Implemented logic includes:
+
+- IMEI structural validation;
+- Luhn/check-digit validation;
+- registry lookup;
+- ECDSA P-256 signature verification;
+- SHA-256 integrity comparison;
+- four-state classification.
+
+## 2. IMEI Validation
+
+**Path:** `provenance_engine/imei.py`
+
+```text
+Exactly 15 digits
+        +
+Valid IMEI/Luhn check digit
+```
+
+```text
+Malformed / bad check digit  → INVALID
+Valid but not registered     → UNKNOWN
+```
+
+## 3. Manufacturer Signature Verification
+
+**Path:** `provenance_engine/crypto.py`
+
+Synthetic genesis records use **ECDSA P-256** signatures. The verification path loads the stored public key, reconstructs the signed payload, and verifies the signature.
+
+A failed signature contributes to a `TAMPERED` classification.
+
+## 4. SHA-256 Tamper Detection
+
+**Path:** `provenance_engine/engine.py`
+
+```text
+Current device record
+        ↓
+Calculate SHA-256
+        ↓
+Compare with trusted anchor
+```
+
+| Condition | Outcome |
+|---|---|
+| Hash matches | Integrity check passes |
+| Hash differs | `TAMPERED` |
+
+## 5. AES-256-GCM Off-Chain Storage
+
+**Path:** `offchain_storage/`
+
+Implemented behavior:
+
+- AES-256-GCM authenticated encryption;
+- 256-bit key;
+- fresh 96-bit nonce per encryption;
+- encrypted-envelope persistence;
+- restore/decryption workflow;
+- SHA-256 content reference.
+
+Local prototype keys are excluded from version control.
+
+## 6. FastAPI Verification
+
+**Path:** `api_gateway/`
+
+```http
+POST /api/v1/provenance/verify
+```
+
+Example:
+
+```json
 {
-  "imei": "359821061234567",
-  "is_genuine": true,
-  "current_status": "ACTIVATED",
-  "current_owner": "Carrier_Node_A",
-  "is_tampered": false,
-  "lifecycle_history": [
-    { "block_index": 1, "event": "REGISTRATION", "owner": "OEM_ORIGIN" },
-    { "block_index": 2, "event": "CUSTODY_TRANSFER", "owner": "Carrier_Node_A" }
-  ]
+  "imei": "<15-digit test IMEI>",
+  "requesting_msp": "CarrierMSP"
 }
+```
 
-### 2. The Operational Control Tower UI (Streamlit Dashboard)
-- **Interface Access:** Accessible locally at http://localhost:8501[cite: 1]
-- **Output Artifact:** A comprehensive web console displaying real-time hardware authenticity states[cite: 1]. It delivers:
-  - **Authenticity Metric Blocks:** Displays green GENUINE or red ALERT: TAMPERED device security states[cite: 1].
-  - **Live Analytical Telemetry:** Renders performance graphs verifying real-world KPIs, including Blacklist Propagation Speed maintaining an execution time of < 2 minutes globally across network peers[cite: 1].
+The endpoint calls the same `ProvenanceEngine` used by Streamlit.
 
-### 3. Automated Security Simulation Logs (PyTest Matrix)
-- **Interface Access:** Generated within the terminal via docker-compose run api-gateway pytest tests/[cite: 1]
-- **Output Artifact:** Structured terminal output detailing defense evaluations[cite: 1]. When a simulated attack modifies a database cell directly, the validation engine outputs critical exception logs[cite: 1]:
+# 🖥️ Streamlit Control Tower
 
-telecom_api  | [SECURITY CRITICAL] Cryptographic hash mismatch detected for IMEI 359821061234567.[cite: 1]
-telecom_api  | [ALERT] Local state hash does not match sequential blockchain block hash pointer![cite: 1]
-telecom_api  | [ACTION] State flagged as TAMPERED. Log appended to immutable audit trail.[cite: 1]
+**Path:** `dashboard/app.py`
 
----
+## Page 1 — Asset Verification Tower
 
-## 📊 Core Performance Metrics
+**Purpose:** Verify one IMEI and display its provenance result.
 
-This architecture is built to meet high-throughput enterprise Service Level Agreements (SLAs) validated in production simulations[cite: 1]:
-* **Blacklist Propagation Speed:** Reduced from a 24–48 hour legacy baseline down to < 2 minutes globally across connected carrier nodes[cite: 1].
-* **Fraud Infiltration Mitigation:** Demonstrated a 52% to 65% reduction in fraudulent network activation attempts by blocking cloned identities at the API gateway[cite: 1].
-* **Forensic Audit Auditing:** Network-wide supply chain tracing and device history audits reduced from days down to < 10 minutes[cite: 1].
+Displays:
 
----
+- authenticity state;
+- lifecycle state;
+- owner/custody node;
+- verification status;
+- lifecycle/reference history.
 
-## 🚀 Local Deployment and Orchestration
+Possible outcomes:
 
-The entire infrastructure layer is virtualized using Docker container structures to simulate a local multi-region consensus network[cite: 1].
+```text
+GENUINE
+TAMPERED
+UNKNOWN
+INVALID
+```
 
-### Prerequisites
-Ensure your local machine has Docker Desktop installed and running in the background[cite: 1].
+## Page 2 — Network Verification & Operational Analytics
 
-### Initialization Command
-Execute the compilation array from a terminal opened inside your root folder[cite: 1]:
+**Purpose:** Summarize evidence generated by verification activity.
 
-docker-compose up --build
+Displays:
+
+- completed verifications;
+- Genuine count;
+- Tampered count;
+- validation/test pass rate;
+- invalid-input attempts;
+- application/API errors;
+- recent verification records;
+- event-stream simulation summary;
+- aggregate security indicators.
+
+Primary evidence:
+
+```text
+tests/test_log.csv
+evidence/event_stream_log.csv
+evidence/security_event_log.csv
+```
+
+## Page 3 — Security Threat Detection & Response
+
+**Purpose:** Show the security interpretation of the current IMEI.
+
+For `GENUINE`, the page shows a clear integrity-verification trace.
+
+For `TAMPERED`, it shows:
+
+```text
+Verification ingress
+        ↓
+Simulated unauthorized modification condition
+        ↓
+Integrity mismatch
+        ↓
+Provenance validation failure
+        ↓
+Security action
+        ↓
+Audit record
+        ↓
+Containment handling
+```
+
+# ⛓️ Lifecycle & Fabric Logic
+
+**Path:** `chaincode/imei/`
+
+```text
+REGISTERED
+    ↓
+DISTRIBUTOR_CUSTODY
+    ↓
+CARRIER_CUSTODY
+    ↓
+ACTIVATED
+    ↓
+BLACKLISTED
+    ↓
+DECOMMISSIONED
+```
+
+Implemented/reference capabilities include device registration, query, lifecycle updates, custody transfer, transition allow-lists, blacklist/decommission states, transaction/history concepts, and MSP-based authorization.
+
+Reference MSPs:
+
+```text
+OEMMSP
+DistributorMSP
+CarrierMSP
+OrdererMSP
+```
+
+> [!NOTE]
+> The repository contains Fabric chaincode and configuration/reference material. The local Python prototype does not require a complete running Fabric peer/orderer/CA network.
+
+# 📡 Event-Streaming Simulation
+
+**Path:** `event_streaming/`
+
+The project contains a **Kafka-compatible producer/consumer simulation**.
+
+Runtime evidence is explicitly labeled:
+
+```text
+SIMULATED_EMIT
+SIMULATED_PROCESS
+SIMULATION_PASS
+```
+
+# 🧪 Evidence & Validation
+
+## Automated Python Validation
+
+Run:
+
+```powershell
+python run_validation.py
+```
+
+Current validation:
+
+```text
+9 passed, 0 failed
+```
+
+Generated outputs:
+
+```text
+evidence/pytest_console_output.txt
+evidence/pytest_results.xml
+evidence/validation_summary.md
+```
+
+The suite validates IMEI checking, four-state classification, ECDSA verification, SHA-256 tamper detection, AES-256-GCM encryption/decryption, off-chain persistence/restore, API/shared-engine consistency, event-stream simulation labels, and UNKNOWN-state handling.
+
+## Four-State Execution Evidence
+
+Run:
+
+```powershell
+python scripts\generate_current_evidence.py
+```
+
+Outputs:
+
+```text
+tests/test_log.csv
+evidence/event_stream_log.csv
+evidence/security_event_log.csv
+evidence/sample_inputs/
+evidence/sample_outputs/
+evidence/current_execution_results.json
+```
+
+| Expected | Observed | Test result |
+|---|---|---|
+| GENUINE | GENUINE | PASS |
+| TAMPERED | TAMPERED | PASS |
+| UNKNOWN | UNKNOWN | PASS |
+| INVALID | INVALID | PASS |
+
+> [!TIP]
+> `PASS` means the test produced the expected outcome. A TAMPERED scenario can correctly produce `PASS` when the intended tamper condition is successfully detected.
+
+## Test Log Schema
+
+**File:** `tests/test_log.csv`
+
+```text
+run_date
+run_time
+imei
+requesting_node
+test_case
+imei_result
+current_status
+current_owner
+data_source
+response_time_ms
+streamlit_status
+result
+```
+
+# 🗂️ Synthetic Test Registry
+
+**Path:** `data/device_registry.json`
+
+Regenerate controlled fixtures:
+
+```powershell
+python scripts\seed_demo_registry.py --reset
+```
+
+Current generated identifiers are written to:
+
+```text
+evidence/demo_test_values.json
+```
+
+Classification is derived from record state and cryptographic checks:
+
+```text
+Registered + valid signature + matching hash → GENUINE
+Registered + signature/hash violation        → TAMPERED
+Valid IMEI + no record                       → UNKNOWN
+Malformed / bad check digit                  → INVALID
+```
+
+# 🚀 Quick Start — Windows
+
+## 1. Install dependencies
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+## 2. Run validation
+
+```powershell
+python run_validation.py
+```
+
+Expected:
+
+```text
+9 passed
+```
+
+## 3. Start FastAPI
+
+```powershell
+python -m uvicorn api_gateway.main:app --host 127.0.0.1 --port 8000
+```
+
+Swagger:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+## 4. Start Streamlit
+
+In a second PowerShell window:
+
+```powershell
+python -m streamlit run dashboard\app.py
+```
+
+Dashboard:
+
+```text
+http://localhost:8501
+```
+
+# 🐳 Docker
+
+The included Docker configuration runs only:
+
+- FastAPI gateway;
+- Streamlit dashboard.
+
+```powershell
+docker compose up --build
+```
+
+Kafka and Hyperledger Fabric are not deployed by this Compose configuration.
+
+# 📁 Repository Structure
+
+```text
+IMEI-Provenance-Blockchain/
+│
+├── api_gateway/            # FastAPI interface
+├── chaincode/imei/         # Fabric Go lifecycle/reference logic
+├── dashboard/              # Streamlit control tower
+├── data/                   # Synthetic prototype registry
+├── docs/                   # Architecture and implementation mapping
+├── docker/                 # API/dashboard Dockerfiles
+├── event_streaming/        # Kafka-compatible simulation
+├── evidence/               # Validation and runtime evidence
+├── models/                 # Domain/database models
+├── network-config/         # Fabric reference configuration
+├── offchain_storage/       # AES-256-GCM storage
+├── provenance_engine/      # Shared IMEI/signature/hash engine
+├── scripts/                # Fixture/evidence generators
+├── tests/                  # Automated tests and runtime log
+├── requirements.txt
+├── run_validation.py
+└── README.md
+```
+
+# 🧾 Implementation Traceability
+
+| Technical mechanism | Primary implementation | Evidence |
+|---|---|---|
+| IMEI validation | `provenance_engine/imei.py` | Python tests |
+| Four-state classification | `provenance_engine/engine.py` | `test_log.csv` |
+| ECDSA signature verification | `provenance_engine/crypto.py` | automated tests |
+| SHA-256 tamper detection | `provenance_engine/engine.py` | security evidence |
+| AES-256-GCM storage | `offchain_storage/` | encryption tests |
+| FastAPI verification | `api_gateway/` | API tests |
+| Streamlit control tower | `dashboard/` | runtime evidence |
+| Fabric lifecycle logic | `chaincode/imei/` | Go reference/tests |
+| MSP/custody concepts | chaincode + `network-config/` | lifecycle tests |
+| Event-stream integration | `event_streaming/` | simulated event log |
+| Evidence generation | `scripts/` + dashboard | CSV / JSON / XML |
+
+For the detailed publication-to-code mapping:
+
+```text
+docs/ARTICLE_IMPLEMENTATION_MAPPING.md
+```
+
+# 🧑‍⚖️ RFE Technical-Evidence Relevance
+
+For RFE-support purposes, this repository documents **technical implementation and continued development** of the IMEI-provenance portion of the proposed endeavor.
+
+It provides inspectable artifacts including:
+
+- executable source code;
+- shared provenance-verification logic;
+- cryptographic validation;
+- lifecycle chaincode/reference logic;
+- API and dashboard interfaces;
+- generated input/output evidence;
+- security/event logs;
+- automated validation results;
+- reproducible execution instructions.
+
+The strongest use of this repository is to demonstrate that the IMEI-provenance architecture has progressed beyond a written concept into an **inspectable and executable technical prototype**.
+
+# 📌 Validation References
+
+Current validation:
+
+```text
+evidence/validation_summary.md
+```
+
+Architecture-to-code mapping:
+
+```text
+docs/ARTICLE_IMPLEMENTATION_MAPPING.md
+```
+
+Lifecycle and authorization rules:
+
+```text
+docs/LIFECYCLE_AND_AUTHORIZATION.md
+```
+
+# ✅ Summary
+
+```text
+IMEI validation
+      ↓
+Registry lookup
+      ↓
+ECDSA manufacturer-signature verification
+      ↓
+SHA-256 integrity comparison
+      ↓
+GENUINE / TAMPERED / UNKNOWN / INVALID
+      ↓
+API + Streamlit presentation
+      ↓
+Evidence and security-event generation
+```
+
+**IMEI Provenance Blockchain** demonstrates the implemented device-provenance verification, cryptographic-integrity, lifecycle-control, evidence-generation, and operator-interface mechanisms of the technical prototype.
