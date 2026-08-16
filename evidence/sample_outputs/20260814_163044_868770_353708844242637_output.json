@@ -1,0 +1,20 @@
+{
+  "run_date": "2026-08-14",
+  "run_time": "16:30:44",
+  "imei": "353708844242637",
+  "imei_result": "UNKNOWN",
+  "test_result": "PASS",
+  "data_source": "API Gateway",
+  "response": {
+    "imei": "353708844242637",
+    "authenticity_state": "UNKNOWN",
+    "is_genuine": false,
+    "current_status": "NOT_REGISTERED",
+    "current_owner": "NOT_AVAILABLE",
+    "is_tampered": false,
+    "signature_valid": null,
+    "hash_integrity_valid": null,
+    "reason": "Valid IMEI, but no matching record exists in the prototype registry.",
+    "lifecycle_history": []
+  }
+}

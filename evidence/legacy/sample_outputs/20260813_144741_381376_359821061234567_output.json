@@ -1,0 +1,29 @@
+{
+  "run_date": "2026-08-13",
+  "run_time": "14:47:41",
+  "imei": "359821061234567",
+  "imei_result": "GENUINE",
+  "test_result": "PASS",
+  "data_source": "Local Fallback Simulation",
+  "response": {
+    "imei": "359821061234567",
+    "is_genuine": true,
+    "current_status": "ACTIVATED",
+    "current_owner": "Carrier_Node_A",
+    "is_tampered": false,
+    "lifecycle_history": [
+      {
+        "block_index": 1,
+        "timestamp": "2026-08-13T20:47:41.317327",
+        "event_type": "REGISTRATION",
+        "authorized_operator": "OEM_ORIGIN"
+      },
+      {
+        "block_index": 2,
+        "timestamp": "2026-08-13T20:47:41.317944",
+        "event_type": "CUSTODY_TRANSFER",
+        "authorized_operator": "Carrier_Node_A"
+      }
+    ]
+  }
+}

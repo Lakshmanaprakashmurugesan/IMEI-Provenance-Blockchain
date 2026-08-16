@@ -1,0 +1,12 @@
+{
+  "run_date": "2026-08-13",
+  "run_time": "20:51:43",
+  "imei": "45567856789456a",
+  "imei_result": "INVALID",
+  "test_result": "FAIL",
+  "data_source": "STREAMLIT_INPUT_VALIDATION",
+  "response": {
+    "imei_result": "INVALID",
+    "message": "IMEI must contain exactly 15 numeric digits."
+  }
+}

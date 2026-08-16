@@ -1,0 +1,39 @@
+{
+  "run_date": "2026-08-14",
+  "run_time": "16:26:03",
+  "imei": "991454878015494",
+  "imei_result": "GENUINE",
+  "test_result": "PASS",
+  "data_source": "API Gateway",
+  "response": {
+    "imei": "991454878015494",
+    "authenticity_state": "GENUINE",
+    "is_genuine": true,
+    "current_status": "ACTIVATED",
+    "current_owner": "SYNTHETIC_CARRIER",
+    "is_tampered": false,
+    "signature_valid": true,
+    "hash_integrity_valid": true,
+    "reason": "manufacturer signature and anchored record hash both verify.",
+    "lifecycle_history": [
+      {
+        "block_index": 1,
+        "timestamp": "2026-08-14T20:58:52.243304+00:00",
+        "event_type": "REGISTRATION",
+        "authorized_operator": "SYNTHETIC_OEM"
+      },
+      {
+        "block_index": 2,
+        "timestamp": "2026-08-14T20:58:52.243304+00:00",
+        "event_type": "CUSTODY_TRANSFER",
+        "authorized_operator": "SYNTHETIC_CARRIER"
+      },
+      {
+        "block_index": 3,
+        "timestamp": "2026-08-14T20:58:52.243304+00:00",
+        "event_type": "ACTIVATION",
+        "authorized_operator": "SYNTHETIC_CARRIER"
+      }
+    ]
+  }
+}

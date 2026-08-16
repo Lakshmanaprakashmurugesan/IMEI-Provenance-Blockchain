@@ -1,0 +1,21 @@
+{
+  "run_date": "2026-08-15",
+  "run_time": "18:07:30",
+  "imei": "353708844242637",
+  "imei_result": "UNKNOWN",
+  "test_result": "PASS",
+  "data_source": "Shared Local Provenance Engine",
+  "response": {
+    "imei": "353708844242637",
+    "authenticity_state": "UNKNOWN",
+    "is_genuine": false,
+    "is_tampered": false,
+    "current_status": "NOT_REGISTERED",
+    "current_owner": "NOT_AVAILABLE",
+    "signature_valid": null,
+    "hash_integrity_valid": null,
+    "reason": "Valid IMEI, but no matching record exists in the prototype registry.",
+    "lifecycle_history": [],
+    "data_source": "Shared Provenance Engine"
+  }
+}

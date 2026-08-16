@@ -1,0 +1,10 @@
+run_date,run_time,imei,requesting_node,test_case,imei_result,current_status,current_owner,data_source,response_time_ms,streamlit_status,result
+2026-08-13,14:46:41,685478948789367,CarrierMSP (Node A),IMEI Provenance Verification,TAMPERED,TAMPER_LOCKDOWN,SYSTEM_ALERT,Local Fallback Simulation,2732.065,Query completed successfully via Local Fallback Simulation,PASS
+2026-08-13,14:47:41,359821061234567,CarrierMSP (Node A),IMEI Provenance Verification,GENUINE,ACTIVATED,Carrier_Node_A,Local Fallback Simulation,2787.274,Query completed successfully via Local Fallback Simulation,PASS
+2026-08-13,20:51:27,455678567894567,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,Local Prototype Registry,3009.877,Query completed successfully via Local Prototype Registry,PASS
+2026-08-13,20:51:43,45567856789456a,CarrierMSP (Node A),IMEI Input Validation,INVALID,INVALID_INPUT,NOT_AVAILABLE,STREAMLIT_INPUT_VALIDATION,0.0,Invalid IMEI input,FAIL
+2026-08-13,20:51:59,455678567000000,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,Local Prototype Registry,2755.38,Query completed successfully via Local Prototype Registry,PASS
+2026-08-13,20:54:13,678936789394897,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,Local Prototype Registry,2757.456,Query completed successfully via Local Prototype Registry,PASS
+2026-08-13,20:54:48,678936789394899,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,Local Prototype Registry,2732.569,Query completed successfully via Local Prototype Registry,PASS
+2026-08-13,20:55:25,359821061234567,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,Local Prototype Registry,2724.292,Query completed successfully via Local Prototype Registry,PASS
+2026-08-14,14:24:15,678435678945678,CarrierMSP (Node A),IMEI Provenance Verification,TAMPERED,TAMPER_LOCKDOWN,SYSTEM_ALERT,Local Fallback Simulation,2745.703,Query completed successfully via Local Fallback Simulation,PASS
