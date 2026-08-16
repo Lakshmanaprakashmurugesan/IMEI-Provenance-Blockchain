@@ -1,29 +1,28 @@
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
+from provenance_engine.imei import validate_imei
 
 class LifecycleEvent(BaseModel):
-    block_index: int = Field(..., description="Sequential block pointer on the permissioned ledger")
-    timestamp: datetime = Field(..., default_factory=datetime.utcnow)
-    event_type: str = Field(..., description="Operational event state: REGISTRATION, TRANSFER, ACTIVATION, BLACKLIST")
-    authorized_operator: str = Field(..., description="The unique MSP Identifier of the initiating carrier node")
+    block_index: int
+    timestamp: datetime | str
+    event_type: str
+    authorized_operator: str
 
 class IMEIVerificationRequest(BaseModel):
-    imei: str = Field(..., description="The unique 15-digit International Mobile Equipment Identity string")
-    carrier_signature: str = Field(..., description="Hexadecimal asymmetric digital signature validating identity genesis")
-    public_key_fingerprint: str = Field(..., description="The SHA-256 fingerprint tracking the signing certificate path")
+    imei: str = Field(..., description="15-digit IMEI with valid check digit")
+    requesting_msp: str = Field(default="CarrierMSP")
 
-    @field_validator('imei')
-    @classmethod
-    def validate_imei_format(cls, value: str) -> str:
-        if not value.isdigit() or len(value) != 15:
-            raise ValueError("Invalid asset identifier format. IMEI must be exactly 15 numeric digits.")
-        return value
+
 
 class VerificationResponse(BaseModel):
     imei: str
+    authenticity_state: str
     is_genuine: bool
     current_status: str
     current_owner: str
     is_tampered: bool
+    signature_valid: bool | None = None
+    hash_integrity_valid: bool | None = None
+    reason: str
     lifecycle_history: List[LifecycleEvent]
