@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated synthetic test registry; not real device data.",
+  "devices": [
+    {
+      "imei": "991454878015494",
+      "fixture_type": "SYNTHETIC_GENUINE",
+      "genesis_payload": {
+        "imei": "991454878015494",
+        "manufacturer": "SYNTHETIC_OEM",
+        "created_at": "2026-08-14T20:58:52.243304+00:00"
+      },
+      "manufacturer_public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEOwwiGdco0Ld0i/X5KEYtzQzadB6FYHG9ZjfpZGBrsELckarJFHHixacRA32aa8AsgZmIY5p6g0o2xRlLw5dTpA==",
+      "manufacturer_signature": "MEQCICq7rsnHYKWO8kENwZbaK/bXhMy7kfuBQ3iCnli1gTzKAiB2j7jjovtXmq7OZh6WjqMA363rgA6MXjlvWC5P6fVmEg==",
+      "anchored_hash": "c70893ea99746bf3eb97c9f8191f622547b0d736d9270020bafc1bdedfdf4267",
+      "current_record": {
+        "imei": "991454878015494",
+        "status": "ACTIVATED",
+        "owner": "SYNTHETIC_CARRIER",
+        "manufacturer": "SYNTHETIC_OEM"
+      },
+      "lifecycle_history": [
+        {
+          "block_index": 1,
+          "timestamp": "2026-08-14T20:58:52.243304+00:00",
+          "event_type": "REGISTRATION",
+          "authorized_operator": "SYNTHETIC_OEM"
+        },
+        {
+          "block_index": 2,
+          "timestamp": "2026-08-14T20:58:52.243304+00:00",
+          "event_type": "CUSTODY_TRANSFER",
+          "authorized_operator": "SYNTHETIC_CARRIER"
+        },
+        {
+          "block_index": 3,
+          "timestamp": "2026-08-14T20:58:52.243304+00:00",
+          "event_type": "ACTIVATION",
+          "authorized_operator": "SYNTHETIC_CARRIER"
+        }
+      ]
+    },
+    {
+      "imei": "998554845333806",
+      "fixture_type": "SYNTHETIC_TAMPERED",
+      "genesis_payload": {
+        "imei": "998554845333806",
+        "manufacturer": "SYNTHETIC_OEM",
+        "created_at": "2026-08-14T20:58:52.245936+00:00"
+      },
+      "manufacturer_public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgihcg5iZkQmwagnqRjfUJ8NVDG1hi/7ju1pN2/3953o168Mjhfp5/TptVRQhPHI0SaNelXatocfspHKmAXKOZQ==",
+      "manufacturer_signature": "MEYCIQC/u52U9HRW8GJVoUPbEwkcEb+7GZWasWdiNX+vwxCLnwIhAL19KF4aPBA45PAzFMVvNUjWTIWUuMi1AVkoqeE99V3b",
+      "anchored_hash": "8ab80671d1965607bc1b2f79ba96f929dbd61ce5e1e3e6f33481ab02658df025",
+      "current_record": {
+        "imei": "998554845333806",
+        "status": "ACTIVATED",
+        "owner": "UNAUTHORIZED_TEST_MUTATION",
+        "manufacturer": "SYNTHETIC_OEM"
+      },
+      "lifecycle_history": [
+        {
+          "block_index": 1,
+          "timestamp": "2026-08-14T20:58:52.245936+00:00",
+          "event_type": "REGISTRATION",
+          "authorized_operator": "SYNTHETIC_OEM"
+        },
+        {
+          "block_index": 2,
+          "timestamp": "2026-08-14T20:58:52.245936+00:00",
+          "event_type": "CUSTODY_TRANSFER",
+          "authorized_operator": "SYNTHETIC_CARRIER"
+        },
+        {
+          "block_index": 3,
+          "timestamp": "2026-08-14T20:58:52.245936+00:00",
+          "event_type": "ACTIVATION",
+          "authorized_operator": "SYNTHETIC_CARRIER"
+        }
+      ]
+    }
+  ]
+}
