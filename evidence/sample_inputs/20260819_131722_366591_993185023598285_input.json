@@ -1,0 +1,11 @@
+{
+  "run_date": "2026-08-19",
+  "run_time": "13:17:22",
+  "imei": "993185023598285",
+  "requesting_node": "CarrierMSP (Node A)",
+  "data_source": "API Gateway",
+  "request_payload": {
+    "imei": "993185023598285",
+    "requesting_msp": "CarrierMSP (Node A)"
+  }
+}

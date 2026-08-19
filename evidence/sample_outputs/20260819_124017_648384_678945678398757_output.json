@@ -1,0 +1,20 @@
+{
+  "run_date": "2026-08-19",
+  "run_time": "12:40:17",
+  "imei": "678945678398757",
+  "imei_result": "INVALID",
+  "test_result": "FAIL",
+  "data_source": "API Gateway",
+  "response": {
+    "imei": "678945678398757",
+    "authenticity_state": "INVALID",
+    "is_genuine": false,
+    "current_status": "INVALID_INPUT",
+    "current_owner": "NOT_AVAILABLE",
+    "is_tampered": false,
+    "signature_valid": null,
+    "hash_integrity_valid": null,
+    "reason": "IMEI check digit is invalid.",
+    "lifecycle_history": []
+  }
+}

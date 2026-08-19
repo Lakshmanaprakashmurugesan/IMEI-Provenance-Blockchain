@@ -1,1 +1,8 @@
 run_date,run_time,imei,requesting_node,test_case,imei_result,current_status,current_owner,data_source,response_time_ms,streamlit_status,result
+2026-08-19,12:40:17,678945678398757,CarrierMSP (Node A),IMEI Provenance Verification,INVALID,INVALID_INPUT,NOT_AVAILABLE,API Gateway,2139.038,Query completed successfully via API Gateway,FAIL
+2026-08-19,12:42:14,678945678398757uh,CarrierMSP (Node A),IMEI Input Validation,INVALID,INVALID_INPUT,NOT_AVAILABLE,STREAMLIT_INPUT_VALIDATION,0.0,Invalid IMEI input,FAIL
+2026-08-19,13:06:52,991377451265527,CarrierMSP (Node A),IMEI Provenance Verification,GENUINE,ACTIVATED,SYNTHETIC_CARRIER,API Gateway,2085.285,Query completed successfully via API Gateway,PASS
+2026-08-19,13:11:34,999742791527740,CarrierMSP (Node A),IMEI Provenance Verification,TAMPERED,TAMPER_LOCKDOWN,SYSTEM_ALERT,API Gateway,2045.172,Query completed successfully via API Gateway,PASS
+2026-08-19,13:17:22,993185023598285,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,API Gateway,2066.688,Query completed successfully via API Gateway,PASS
+2026-08-19,13:20:42,123,CarrierMSP (Node A),IMEI Input Validation,INVALID,INVALID_INPUT,NOT_AVAILABLE,STREAMLIT_INPUT_VALIDATION,0.0,Invalid IMEI input,FAIL
+2026-08-19,13:26:34,999742791527740,CarrierMSP (Node A),IMEI Provenance Verification,TAMPERED,TAMPER_LOCKDOWN,SYSTEM_ALERT,API Gateway,2047.236,Query completed successfully via API Gateway,PASS
