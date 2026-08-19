@@ -1,17 +1,19 @@
 ---
 Organizations:
+
   - &OrdererOrg
     Name: OrdererOrg
     ID: OrdererMSP
     MSPDir: crypto-config/ordererOrganizations/example.com/msp
+
     Policies:
-      Reader:
+      Readers:
         Type: Signature
         Rule: "OR('OrdererMSP.member')"
-      Writer:
+      Writers:
         Type: Signature
         Rule: "OR('OrdererMSP.member')"
-      Admin:
+      Admins:
         Type: Signature
         Rule: "OR('OrdererMSP.admin')"
 
@@ -19,16 +21,18 @@ Organizations:
     Name: OEMOrg
     ID: OEMMSP
     MSPDir: crypto-config/peerOrganizations/oem.example.com/msp
+
     Policies:
-      Reader:
+      Readers:
         Type: Signature
         Rule: "OR('OEMMSP.admin', 'OEMMSP.peer', 'OEMMSP.client')"
-      Writer:
+      Writers:
         Type: Signature
         Rule: "OR('OEMMSP.admin', 'OEMMSP.client')"
-      Admin:
+      Admins:
         Type: Signature
         Rule: "OR('OEMMSP.admin')"
+
     AnchorPeers:
       - Host: peer0.oem.example.com
         Port: 7051
@@ -37,30 +41,56 @@ Organizations:
     Name: CarrierOrg
     ID: CarrierMSP
     MSPDir: crypto-config/peerOrganizations/carrier.example.com/msp
+
     Policies:
-      Reader:
+      Readers:
         Type: Signature
         Rule: "OR('CarrierMSP.admin', 'CarrierMSP.peer', 'CarrierMSP.client')"
-      Writer:
+      Writers:
         Type: Signature
         Rule: "OR('CarrierMSP.admin', 'CarrierMSP.client')"
-      Admin:
+      Admins:
         Type: Signature
         Rule: "OR('CarrierMSP.admin')"
+
     AnchorPeers:
       - Host: peer0.carrier.example.com
         Port: 9051
 
+
 Capabilities:
+
   Channel: &ChannelCapabilities
     V2_0: true
+
   Orderer: &OrdererCapabilities
     V2_0: true
+
   Application: &ApplicationCapabilities
     V2_0: true
 
+
+Channel: &ChannelDefaults
+
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+
 Application: &ApplicationDefaults
+
   Organizations:
+
   Policies:
     LifecycleEndorsement:
       Type: ImplicitMeta
@@ -68,28 +98,43 @@ Application: &ApplicationDefaults
     Endorsement:
       Type: ImplicitMeta
       Rule: "MAJORITY Endorsement"
-    Read:
+    Readers:
       Type: ImplicitMeta
       Rule: "ANY Readers"
-    Write:
+    Writers:
       Type: ImplicitMeta
       Rule: "ANY Writers"
-    Admin:
+    Admins:
       Type: ImplicitMeta
       Rule: "MAJORITY Admins"
+
   Capabilities:
     <<: *ApplicationCapabilities
 
+
 Orderer: &OrdererDefaults
+
   OrdererType: etcdraft
+
   Addresses:
     - orderer.example.com:7050
+
   BatchTimeout: 2s
+
   BatchSize:
     MaxMessageCount: 100
     AbsoluteMaxBytes: 99 MB
     PreferredMaxBytes: 512 KB
+
+  EtcdRaft:
+    Consenters:
+      - Host: orderer.example.com
+        Port: 7050
+        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+
   Organizations:
+
   Policies:
     Readers:
       Type: ImplicitMeta
@@ -104,18 +149,43 @@ Orderer: &OrdererDefaults
       Type: ImplicitMeta
       Rule: "ANY Writers"
 
+  Capabilities:
+    <<: *OrdererCapabilities
+
+
+Consortiums:
+
+  SampleConsortium:
+    Organizations:
+      - *OEMOrg
+      - *CarrierOrg
+
+
 Profiles:
-  TwoOrgsChannel:
-    Consortium: SampleConsortium
+
+  TwoOrgsOrdererGenesis:
     <<: *ChannelDefaults
+
     Orderer:
       <<: *OrdererDefaults
       Organizations:
         - *OrdererOrg
-      Capabilities: *OrdererCapabilities
+
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+          - *OEMOrg
+          - *CarrierOrg
+
+  TwoOrgsChannel:
+    Consortium: SampleConsortium
+
+    <<: *ChannelDefaults
+
     Application:
       <<: *ApplicationDefaults
       Organizations:
         - *OEMOrg
         - *CarrierOrg
-      Capabilities: *ApplicationCapabilities
+      Capabilities:
+        <<: *ApplicationCapabilities

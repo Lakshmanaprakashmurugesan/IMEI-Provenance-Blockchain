@@ -3,18 +3,18 @@
   "purpose": "Generated synthetic test registry; not real device data.",
   "devices": [
     {
-      "imei": "991454878015494",
+      "imei": "991377451265527",
       "fixture_type": "SYNTHETIC_GENUINE",
       "genesis_payload": {
-        "imei": "991454878015494",
+        "imei": "991377451265527",
         "manufacturer": "SYNTHETIC_OEM",
-        "created_at": "2026-08-14T20:58:52.243304+00:00"
+        "created_at": "2026-08-19T03:27:48.296081+00:00"
       },
-      "manufacturer_public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEOwwiGdco0Ld0i/X5KEYtzQzadB6FYHG9ZjfpZGBrsELckarJFHHixacRA32aa8AsgZmIY5p6g0o2xRlLw5dTpA==",
-      "manufacturer_signature": "MEQCICq7rsnHYKWO8kENwZbaK/bXhMy7kfuBQ3iCnli1gTzKAiB2j7jjovtXmq7OZh6WjqMA363rgA6MXjlvWC5P6fVmEg==",
-      "anchored_hash": "c70893ea99746bf3eb97c9f8191f622547b0d736d9270020bafc1bdedfdf4267",
+      "manufacturer_public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENMX73y0G3+sITUFdQDwtOyzmO2AOM3XXDrfrKt8PZYKSaIRhGW628Za1iLlPdiOblp59ww+4c9HbVdjWi8fv6g==",
+      "manufacturer_signature": "MEYCIQCmj6Z9xaGqbTYXTtp+xMtOxMQkVR50RG+lkVo7vZSCrgIhALdJ9yzKEuzNYbP7Ix/ElF8p6BC2rvvlLR6ptar84NH7",
+      "anchored_hash": "f1b4cb1510b148315565fe14464c74d9db583a23964a06a2544f7c65356a3fcf",
       "current_record": {
-        "imei": "991454878015494",
+        "imei": "991377451265527",
         "status": "ACTIVATED",
         "owner": "SYNTHETIC_CARRIER",
         "manufacturer": "SYNTHETIC_OEM"
@@ -22,37 +22,37 @@
       "lifecycle_history": [
         {
           "block_index": 1,
-          "timestamp": "2026-08-14T20:58:52.243304+00:00",
+          "timestamp": "2026-08-19T03:27:48.296081+00:00",
           "event_type": "REGISTRATION",
           "authorized_operator": "SYNTHETIC_OEM"
         },
         {
           "block_index": 2,
-          "timestamp": "2026-08-14T20:58:52.243304+00:00",
+          "timestamp": "2026-08-19T03:27:48.296081+00:00",
           "event_type": "CUSTODY_TRANSFER",
           "authorized_operator": "SYNTHETIC_CARRIER"
         },
         {
           "block_index": 3,
-          "timestamp": "2026-08-14T20:58:52.243304+00:00",
+          "timestamp": "2026-08-19T03:27:48.296081+00:00",
           "event_type": "ACTIVATION",
           "authorized_operator": "SYNTHETIC_CARRIER"
         }
       ]
     },
     {
-      "imei": "998554845333806",
+      "imei": "999742791527740",
       "fixture_type": "SYNTHETIC_TAMPERED",
       "genesis_payload": {
-        "imei": "998554845333806",
+        "imei": "999742791527740",
         "manufacturer": "SYNTHETIC_OEM",
-        "created_at": "2026-08-14T20:58:52.245936+00:00"
+        "created_at": "2026-08-19T03:27:48.304484+00:00"
       },
-      "manufacturer_public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgihcg5iZkQmwagnqRjfUJ8NVDG1hi/7ju1pN2/3953o168Mjhfp5/TptVRQhPHI0SaNelXatocfspHKmAXKOZQ==",
-      "manufacturer_signature": "MEYCIQC/u52U9HRW8GJVoUPbEwkcEb+7GZWasWdiNX+vwxCLnwIhAL19KF4aPBA45PAzFMVvNUjWTIWUuMi1AVkoqeE99V3b",
-      "anchored_hash": "8ab80671d1965607bc1b2f79ba96f929dbd61ce5e1e3e6f33481ab02658df025",
+      "manufacturer_public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE2Tc3MXVv19w0pJLCNpKSdchzt5r/5GsklhR9PeYdXarxo7JG6+8ZrzEmH+GrM5pjoW3aj98oX3V8am0YfutiZA==",
+      "manufacturer_signature": "MEQCIGp289Ccnt/SVukaw4sFGverSu4jGL3roHmFGGE+uWTfAiB3DFGR7iK8jVpMfMbOfDyB2bGjmHoQZc57u1G2AwIyQA==",
+      "anchored_hash": "0c65e3136095e55c41c494e4339a6aa8a79e6ffe3777ddcf751879a06e91031d",
       "current_record": {
-        "imei": "998554845333806",
+        "imei": "999742791527740",
         "status": "ACTIVATED",
         "owner": "UNAUTHORIZED_TEST_MUTATION",
         "manufacturer": "SYNTHETIC_OEM"
@@ -60,19 +60,19 @@
       "lifecycle_history": [
         {
           "block_index": 1,
-          "timestamp": "2026-08-14T20:58:52.245936+00:00",
+          "timestamp": "2026-08-19T03:27:48.304484+00:00",
           "event_type": "REGISTRATION",
           "authorized_operator": "SYNTHETIC_OEM"
         },
         {
           "block_index": 2,
-          "timestamp": "2026-08-14T20:58:52.245936+00:00",
+          "timestamp": "2026-08-19T03:27:48.304484+00:00",
           "event_type": "CUSTODY_TRANSFER",
           "authorized_operator": "SYNTHETIC_CARRIER"
         },
         {
           "block_index": 3,
-          "timestamp": "2026-08-14T20:58:52.245936+00:00",
+          "timestamp": "2026-08-19T03:27:48.304484+00:00",
           "event_type": "ACTIVATION",
           "authorized_operator": "SYNTHETIC_CARRIER"
         }

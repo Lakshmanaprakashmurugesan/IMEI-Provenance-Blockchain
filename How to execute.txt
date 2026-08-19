@@ -1,5 +1,35 @@
-terminal type : 
-python -m streamlit run dashboard/app.py
+IMEI PROVENANCE PROTOTYPE — WINDOWS QUICK START
 
-it will direct to the link "http://localhost:8501"
+1) Open PowerShell in the repository root.
 
+2) Install dependencies:
+   python -m pip install -r requirements.txt
+
+3) Generate fresh synthetic test devices (optional; the repository already includes generated synthetic fixtures):
+   python scripts\seed_demo_registry.py --reset
+
+   The command prints one generated GENUINE test IMEI and one generated TAMPERED test IMEI.
+   These values are DATA FIXTURES, not hardcoded decision rules.
+
+4) Run automated validation:
+   python run_validation.py
+
+5) Start the API in PowerShell window 1:
+   python -m uvicorn api_gateway.main:app --host 127.0.0.1 --port 8000
+
+6) Start the dashboard in PowerShell window 2:
+   python -m streamlit run dashboard\app.py
+
+7) Open:
+   http://localhost:8501
+
+FOUR-STATE TESTING
+- GENUINE: use the generated genuine_imei in evidence\demo_test_values.json
+- TAMPERED: use the generated tampered_imei in evidence\demo_test_values.json
+- UNKNOWN: use a different Luhn-valid IMEI that is not in data\device_registry.json
+- INVALID: use malformed digits or an IMEI with an invalid check digit
+
+IMPORTANT SCOPE
+- Kafka code is a Kafka-compatible EVENT STREAMING SIMULATION; no Kafka broker is deployed.
+- Hyperledger Fabric chaincode/configuration is included as implementation/reference code; this ZIP does not contain a running Fabric peer/orderer/CA network.
+- Runtime evidence is generated from actual prototype executions. Historical pre-enhancement logs are preserved under evidence\legacy.
