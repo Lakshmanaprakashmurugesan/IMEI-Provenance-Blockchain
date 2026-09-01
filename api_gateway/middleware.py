@@ -1,7 +1,7 @@
 """Security helpers used by the API.
 
 Unlike the earlier length-based signature placeholder, cryptographic authenticity
-is now evaluated by the shared provenance engine using Ed25519 verification and
+is now evaluated by the shared provenance engine using ECDSA P-256 verification and
 SHA-256 record integrity checks.
 """
 from provenance_engine.engine import ProvenanceEngine

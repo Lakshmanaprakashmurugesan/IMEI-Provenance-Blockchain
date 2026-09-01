@@ -1,191 +1,216 @@
 ---
+
 Organizations:
 
-  - &OrdererOrg
-    Name: OrdererOrg
-    ID: OrdererMSP
-    MSPDir: crypto-config/ordererOrganizations/example.com/msp
+* &OrdererOrg
+  Name: OrdererOrg
+  ID: OrdererMSP
+  MSPDir: crypto-config/ordererOrganizations/example.com/msp
 
-    Policies:
-      Readers:
-        Type: Signature
-        Rule: "OR('OrdererMSP.member')"
-      Writers:
-        Type: Signature
-        Rule: "OR('OrdererMSP.member')"
-      Admins:
-        Type: Signature
-        Rule: "OR('OrdererMSP.admin')"
+  Policies:
+  Readers:
+  Type: Signature
+  Rule: "OR('OrdererMSP.member')"
+  Writers:
+  Type: Signature
+  Rule: "OR('OrdererMSP.member')"
+  Admins:
+  Type: Signature
+  Rule: "OR('OrdererMSP.admin')"
 
-  - &OEMOrg
-    Name: OEMOrg
-    ID: OEMMSP
-    MSPDir: crypto-config/peerOrganizations/oem.example.com/msp
+* &OEMOrg
+  Name: OEMOrg
+  ID: OEMMSP
+  MSPDir: crypto-config/peerOrganizations/oem.example.com/msp
 
-    Policies:
-      Readers:
-        Type: Signature
-        Rule: "OR('OEMMSP.admin', 'OEMMSP.peer', 'OEMMSP.client')"
-      Writers:
-        Type: Signature
-        Rule: "OR('OEMMSP.admin', 'OEMMSP.client')"
-      Admins:
-        Type: Signature
-        Rule: "OR('OEMMSP.admin')"
+  Policies:
+  Readers:
+  Type: Signature
+  Rule: "OR('OEMMSP.admin', 'OEMMSP.peer', 'OEMMSP.client')"
+  Writers:
+  Type: Signature
+  Rule: "OR('OEMMSP.admin', 'OEMMSP.client')"
+  Admins:
+  Type: Signature
+  Rule: "OR('OEMMSP.admin')"
 
-    AnchorPeers:
-      - Host: peer0.oem.example.com
-        Port: 7051
+  AnchorPeers:
 
-  - &CarrierOrg
-    Name: CarrierOrg
-    ID: CarrierMSP
-    MSPDir: crypto-config/peerOrganizations/carrier.example.com/msp
+  * Host: peer0.oem.example.com
+    Port: 7051
 
-    Policies:
-      Readers:
-        Type: Signature
-        Rule: "OR('CarrierMSP.admin', 'CarrierMSP.peer', 'CarrierMSP.client')"
-      Writers:
-        Type: Signature
-        Rule: "OR('CarrierMSP.admin', 'CarrierMSP.client')"
-      Admins:
-        Type: Signature
-        Rule: "OR('CarrierMSP.admin')"
+* &DistributorOrg
+  Name: DistributorOrg
+  ID: DistributorMSP
+  MSPDir: crypto-config/peerOrganizations/distributor.example.com/msp
 
-    AnchorPeers:
-      - Host: peer0.carrier.example.com
-        Port: 9051
+  Policies:
+  Readers:
+  Type: Signature
+  Rule: "OR('DistributorMSP.admin', 'DistributorMSP.peer', 'DistributorMSP.client')"
+  Writers:
+  Type: Signature
+  Rule: "OR('DistributorMSP.admin', 'DistributorMSP.client')"
+  Admins:
+  Type: Signature
+  Rule: "OR('DistributorMSP.admin')"
 
+  AnchorPeers:
+
+  * Host: peer0.distributor.example.com
+    Port: 8051
+
+* &CarrierOrg
+  Name: CarrierOrg
+  ID: CarrierMSP
+  MSPDir: crypto-config/peerOrganizations/carrier.example.com/msp
+
+  Policies:
+  Readers:
+  Type: Signature
+  Rule: "OR('CarrierMSP.admin', 'CarrierMSP.peer', 'CarrierMSP.client')"
+  Writers:
+  Type: Signature
+  Rule: "OR('CarrierMSP.admin', 'CarrierMSP.client')"
+  Admins:
+  Type: Signature
+  Rule: "OR('CarrierMSP.admin')"
+
+  AnchorPeers:
+
+  * Host: peer0.carrier.example.com
+    Port: 9051
 
 Capabilities:
 
-  Channel: &ChannelCapabilities
-    V2_0: true
+Channel: &ChannelCapabilities
+V2_0: true
 
-  Orderer: &OrdererCapabilities
-    V2_0: true
+Orderer: &OrdererCapabilities
+V2_0: true
 
-  Application: &ApplicationCapabilities
-    V2_0: true
-
+Application: &ApplicationCapabilities
+V2_0: true
 
 Channel: &ChannelDefaults
 
-  Policies:
-    Readers:
-      Type: ImplicitMeta
-      Rule: "ANY Readers"
-    Writers:
-      Type: ImplicitMeta
-      Rule: "ANY Writers"
-    Admins:
-      Type: ImplicitMeta
-      Rule: "MAJORITY Admins"
+Policies:
+Readers:
+Type: ImplicitMeta
+Rule: "ANY Readers"
+Writers:
+Type: ImplicitMeta
+Rule: "ANY Writers"
+Admins:
+Type: ImplicitMeta
+Rule: "MAJORITY Admins"
 
-  Capabilities:
-    <<: *ChannelCapabilities
-
+Capabilities:
+<<: *ChannelCapabilities
 
 Application: &ApplicationDefaults
 
-  Organizations:
+Organizations:
 
-  Policies:
-    LifecycleEndorsement:
-      Type: ImplicitMeta
-      Rule: "MAJORITY Endorsement"
-    Endorsement:
-      Type: ImplicitMeta
-      Rule: "MAJORITY Endorsement"
-    Readers:
-      Type: ImplicitMeta
-      Rule: "ANY Readers"
-    Writers:
-      Type: ImplicitMeta
-      Rule: "ANY Writers"
-    Admins:
-      Type: ImplicitMeta
-      Rule: "MAJORITY Admins"
+Policies:
+LifecycleEndorsement:
+Type: ImplicitMeta
+Rule: "MAJORITY Endorsement"
+Endorsement:
+Type: ImplicitMeta
+Rule: "MAJORITY Endorsement"
+Readers:
+Type: ImplicitMeta
+Rule: "ANY Readers"
+Writers:
+Type: ImplicitMeta
+Rule: "ANY Writers"
+Admins:
+Type: ImplicitMeta
+Rule: "MAJORITY Admins"
 
-  Capabilities:
-    <<: *ApplicationCapabilities
-
+Capabilities:
+<<: *ApplicationCapabilities
 
 Orderer: &OrdererDefaults
 
-  OrdererType: etcdraft
+OrdererType: etcdraft
 
-  Addresses:
-    - orderer.example.com:7050
+Addresses:
+- orderer.example.com:7050
 
-  BatchTimeout: 2s
+BatchTimeout: 2s
 
-  BatchSize:
-    MaxMessageCount: 100
-    AbsoluteMaxBytes: 99 MB
-    PreferredMaxBytes: 512 KB
+BatchSize:
+MaxMessageCount: 100
+AbsoluteMaxBytes: 99 MB
+PreferredMaxBytes: 512 KB
 
-  EtcdRaft:
-    Consenters:
-      - Host: orderer.example.com
-        Port: 7050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+EtcdRaft:
+Consenters:
+- Host: orderer.example.com
+Port: 7050
+ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
 
-  Organizations:
+Organizations:
 
-  Policies:
-    Readers:
-      Type: ImplicitMeta
-      Rule: "ANY Readers"
-    Writers:
-      Type: ImplicitMeta
-      Rule: "ANY Writers"
-    Admins:
-      Type: ImplicitMeta
-      Rule: "MAJORITY Admins"
-    BlockValidation:
-      Type: ImplicitMeta
-      Rule: "ANY Writers"
+Policies:
+Readers:
+Type: ImplicitMeta
+Rule: "ANY Readers"
+Writers:
+Type: ImplicitMeta
+Rule: "ANY Writers"
+Admins:
+Type: ImplicitMeta
+Rule: "MAJORITY Admins"
+BlockValidation:
+Type: ImplicitMeta
+Rule: "ANY Writers"
 
-  Capabilities:
-    <<: *OrdererCapabilities
-
+Capabilities:
+<<: *OrdererCapabilities
 
 Consortiums:
 
-  SampleConsortium:
-    Organizations:
-      - *OEMOrg
-      - *CarrierOrg
-
+SampleConsortium:
+Organizations:
+- *OEMOrg
+- *DistributorOrg
+- *CarrierOrg
 
 Profiles:
 
-  TwoOrgsOrdererGenesis:
-    <<: *ChannelDefaults
+TwoOrgsOrdererGenesis:
+<<: *ChannelDefaults
 
-    Orderer:
-      <<: *OrdererDefaults
-      Organizations:
-        - *OrdererOrg
+```
+Orderer:
+  <<: *OrdererDefaults
+  Organizations:
+    - *OrdererOrg
 
-    Consortiums:
-      SampleConsortium:
-        Organizations:
-          - *OEMOrg
-          - *CarrierOrg
+Consortiums:
+  SampleConsortium:
+    Organizations:
+      - *OEMOrg
+      - *DistributorOrg
+      - *CarrierOrg
+```
 
-  TwoOrgsChannel:
-    Consortium: SampleConsortium
+TwoOrgsChannel:
+Consortium: SampleConsortium
 
-    <<: *ChannelDefaults
+```
+<<: *ChannelDefaults
 
-    Application:
-      <<: *ApplicationDefaults
-      Organizations:
-        - *OEMOrg
-        - *CarrierOrg
-      Capabilities:
-        <<: *ApplicationCapabilities
+Application:
+  <<: *ApplicationDefaults
+  Organizations:
+    - *OEMOrg
+    - *DistributorOrg
+    - *CarrierOrg
+  Capabilities:
+    <<: *ApplicationCapabilities
+```

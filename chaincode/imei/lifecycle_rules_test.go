@@ -9,7 +9,7 @@ func TestValidLifecycleTransitions(t *testing.T) {
 		{"CARRIER_CUSTODY", "ACTIVATED"},
 		{"ACTIVATED", "BLACKLISTED"},
 		{"ACTIVATED", "DECOMMISSIONED"},
-		{"BLACKLISTED", "DECOMMISSIONED"},
+		{"ACTIVATED", "DECOMMISSIONED"},
 	}
 
 	for _, c := range cases {

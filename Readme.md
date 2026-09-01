@@ -64,7 +64,7 @@ The publication provides the broader architecture for permissioned IMEI provenan
 - [Evidence & Validation](#-evidence--validation)
 - [Quick Start](#-quick-start--windows)
 - [Repository Structure](#-repository-structure)
-- [RFE Technical-Evidence Relevance](#-rfe-technical-evidence-relevance)
+- [Technical-Evidence Relevance](#-technical-evidence-relevance)
 
 # 🎯 Project Objective
 
@@ -376,12 +376,6 @@ The suite validates IMEI checking, four-state classification, ECDSA verification
 
 ## Four-State Execution Evidence
 
-Run:
-
-```powershell
-python scripts\generate_current_evidence.py
-```
-
 Outputs:
 
 ```text
@@ -390,7 +384,6 @@ evidence/event_stream_log.csv
 evidence/security_event_log.csv
 evidence/sample_inputs/
 evidence/sample_outputs/
-evidence/current_execution_results.json
 ```
 
 | Expected | Observed | Test result |
@@ -398,10 +391,10 @@ evidence/current_execution_results.json
 | GENUINE | GENUINE | PASS |
 | TAMPERED | TAMPERED | PASS |
 | UNKNOWN | UNKNOWN | PASS |
-| INVALID | INVALID | PASS |
+| INVALID | INVALID | FAIL |
 
 > [!TIP]
-> `PASS` means the test produced the expected outcome. A TAMPERED scenario can correctly produce `PASS` when the intended tamper condition is successfully detected.
+> `PASS` indicates a successfully completed provenance-verification test. Invalid input is correctly classified as INVALID, but the Streamlit runtime records input-validation attempts as FAIL in tests/test_log.csv.
 
 ## Test Log Schema
 
@@ -552,9 +545,9 @@ For the detailed publication-to-code mapping:
 docs/ARTICLE_IMPLEMENTATION_MAPPING.md
 ```
 
-# 🧑‍⚖️ RFE Technical-Evidence Relevance
+# 🧑‍⚖️ Technical-Evidence Relevance
 
-For RFE-support purposes, this repository documents **technical implementation and continued development** of the IMEI-provenance portion of the proposed endeavor.
+This repository documents **technical implementation and continued development** of the IMEI-provenance portion of the proposed endeavor.
 
 It provides inspectable artifacts including:
 
