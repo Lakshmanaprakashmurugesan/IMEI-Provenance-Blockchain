@@ -1,0 +1,11 @@
+{
+  "run_date": "2026-09-01",
+  "run_time": "20:22:32",
+  "imei": "993185023598285",
+  "requesting_node": "CarrierMSP (Node A)",
+  "data_source": "Shared Local Provenance Engine",
+  "request_payload": {
+    "imei": "993185023598285",
+    "requesting_msp": "CarrierMSP (Node A)"
+  }
+}

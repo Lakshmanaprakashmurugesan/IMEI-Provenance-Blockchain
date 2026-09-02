@@ -64,7 +64,7 @@ The publication provides the broader architecture for permissioned IMEI provenan
 - [Evidence & Validation](#-evidence--validation)
 - [Quick Start](#-quick-start--windows)
 - [Repository Structure](#-repository-structure)
-- [Technical-Evidence Relevance](#-technical-evidence-relevance)
+- [Technical Evidence and Implementation Traceability](#-technical-evidence-and-implementation-traceability)
 
 # 🎯 Project Objective
 
@@ -545,9 +545,9 @@ For the detailed publication-to-code mapping:
 docs/ARTICLE_IMPLEMENTATION_MAPPING.md
 ```
 
-# 🧑‍⚖️ Technical-Evidence Relevance
+# 🧑‍⚖️ Technical-Evidence and Implementation Traceability
 
-This repository documents **technical implementation and continued development** of the IMEI-provenance portion of the proposed endeavor.
+This repository documents **technical implementation, validation, and continued development** of the IMEI-provenance portion of the proposed endeavor.
 
 It provides inspectable artifacts including:
 

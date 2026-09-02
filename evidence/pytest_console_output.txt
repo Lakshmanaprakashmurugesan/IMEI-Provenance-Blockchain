@@ -5,4 +5,4 @@ C:\Users\abira\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi
     from starlette.testclient import TestClient as TestClient  # noqa
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-9 passed, 1 warning in 1.21s
+9 passed, 1 warning in 4.43s

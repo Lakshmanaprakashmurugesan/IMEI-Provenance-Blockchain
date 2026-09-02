@@ -4,12 +4,12 @@ This directory contains screenshots captured from actual executions of the IMEI 
 
 Recommended evidence set:
 
-- `01_genuine_verification`
-- `02_tampered_verification`
-- `03_unknown_verification`
-- `04_invalid_verification`
-- `05_operational_analytics`
-- `06_security_incident`
+- `01_genuine_verification.docx`
+- `02_tampered_verification.docx`
+- `03_unknown_verification.docx`
+- `04_invalid_verification.docx`
+- `05_operational_analytics.docx`
+- `06_security_incident.docx`
 
 Screenshots should be captured from the same tested version/commit of the prototype and should reflect actual synthetic test executions.
 

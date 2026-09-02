@@ -1,0 +1,40 @@
+{
+  "run_date": "2026-09-01",
+  "run_time": "20:21:53",
+  "imei": "991377451265527",
+  "imei_result": "GENUINE",
+  "test_result": "PASS",
+  "data_source": "Shared Local Provenance Engine",
+  "response": {
+    "imei": "991377451265527",
+    "authenticity_state": "GENUINE",
+    "is_genuine": true,
+    "is_tampered": false,
+    "current_status": "ACTIVATED",
+    "current_owner": "SYNTHETIC_CARRIER",
+    "signature_valid": true,
+    "hash_integrity_valid": true,
+    "reason": "manufacturer signature and anchored record hash both verify.",
+    "lifecycle_history": [
+      {
+        "block_index": 1,
+        "timestamp": "2026-08-19T03:27:48.296081+00:00",
+        "event_type": "REGISTRATION",
+        "authorized_operator": "SYNTHETIC_OEM"
+      },
+      {
+        "block_index": 2,
+        "timestamp": "2026-08-19T03:27:48.296081+00:00",
+        "event_type": "CUSTODY_TRANSFER",
+        "authorized_operator": "SYNTHETIC_CARRIER"
+      },
+      {
+        "block_index": 3,
+        "timestamp": "2026-08-19T03:27:48.296081+00:00",
+        "event_type": "ACTIVATION",
+        "authorized_operator": "SYNTHETIC_CARRIER"
+      }
+    ],
+    "data_source": "Shared Provenance Engine"
+  }
+}

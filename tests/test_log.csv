@@ -6,3 +6,7 @@ run_date,run_time,imei,requesting_node,test_case,imei_result,current_status,curr
 2026-08-19,13:17:22,993185023598285,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,API Gateway,2066.688,Query completed successfully via API Gateway,PASS
 2026-08-19,13:20:42,123,CarrierMSP (Node A),IMEI Input Validation,INVALID,INVALID_INPUT,NOT_AVAILABLE,STREAMLIT_INPUT_VALIDATION,0.0,Invalid IMEI input,FAIL
 2026-08-19,13:26:34,999742791527740,CarrierMSP (Node A),IMEI Provenance Verification,TAMPERED,TAMPER_LOCKDOWN,SYSTEM_ALERT,API Gateway,2047.236,Query completed successfully via API Gateway,PASS
+2026-09-01,20:21:53,991377451265527,CarrierMSP (Node A),IMEI Provenance Verification,GENUINE,ACTIVATED,SYNTHETIC_CARRIER,Shared Local Provenance Engine,4134.033,Query completed successfully via Shared Local Provenance Engine,PASS
+2026-09-01,20:22:20,999742791527740,CarrierMSP (Node A),IMEI Provenance Verification,TAMPERED,TAMPER_LOCKDOWN,SYSTEM_ALERT,Shared Local Provenance Engine,4089.685,Query completed successfully via Shared Local Provenance Engine,PASS
+2026-09-01,20:22:32,993185023598285,CarrierMSP (Node A),IMEI Provenance Verification,UNKNOWN,NOT_REGISTERED,NOT_AVAILABLE,Shared Local Provenance Engine,4071.353,Query completed successfully via Shared Local Provenance Engine,PASS
+2026-09-01,20:22:49,456,CarrierMSP (Node A),IMEI Input Validation,INVALID,INVALID_INPUT,NOT_AVAILABLE,STREAMLIT_INPUT_VALIDATION,0.0,Invalid IMEI input,FAIL
