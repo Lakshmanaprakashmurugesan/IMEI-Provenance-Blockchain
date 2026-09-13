@@ -32,9 +32,11 @@ The generated machine-readable result is `evidence/pytest\_results.xml`; console
 
 The Go unit-test source includes lifecycle transition rules, and go test ./... now executes successfully in the current environment with the required Hyperledger Fabric dependency available. This confirms that the Go test suite can be executed successfully. The repository should still be characterized as Fabric-oriented chaincode and test implementation rather than as evidence of a deployed Hyperledger Fabric network.
 
-## Streamlit startup note
+## Streamlit runtime validation
 
-The enhancement execution container did not have the `streamlit` package installed, so the UI server was not claimed as runtime-tested here. `dashboard/app.py` was Python syntax-checked successfully. On the target Windows environment, install `requirements.txt` and run the commands in `How to execute.txt`.
+During the initial enhancement validation environment, the Streamlit server was not launched and `dashboard/app.py` was syntax-checked only.
+The completed prototype was subsequently runtime-tested in the Windows execution environment on September 12, 2026. The Docker-based FastAPI gateway and Streamlit dashboard were successfully built and started, with the API running on port 8000 and the Streamlit application accessible at `http://localhost:8501`.
+The corresponding Docker build and runtime evidence is preserved in `evidence/docker_compose_build.txt`.
 
 ## Evidence integrity
 

@@ -6,7 +6,7 @@ This repository is a **technical prototype/reference implementation** of selecte
 |-|-|-|
 |IMEI identity validation|`provenance\_engine/imei.py`|15 digits + IMEI/Luhn check digit; Pytest|
 |Shared provenance decision logic|`provenance\_engine/engine.py`|API and dashboard fallback use the same engine|
-|OEM genesis signature|`provenance\_engine/crypto.py` + generated registry records|Real Ed25519 sign/verify test|
+|OEM genesis signature|`provenance\_engine/crypto.py` + generated registry records|Real ECDSA P-256/ SHA-256 signing and verification test|
 |Hash-based tamper detection|`provenance\_engine/engine.py`|SHA-256 comparison against anchored hash; tamper fixture test|
 |GENUINE / TAMPERED / UNKNOWN / INVALID|shared provenance engine|Automated four-state test|
 |API gateway|`api\_gateway/`|FastAPI TestClient validation|

@@ -4,6 +4,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY dashboard ./dashboard
 COPY provenance_engine ./provenance_engine
+COPY event_streaming ./event_streaming
 COPY data ./data
 COPY evidence ./evidence
 COPY tests ./tests
