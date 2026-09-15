@@ -17,7 +17,7 @@ This repository is a **technical prototype/reference implementation** of selecte
 |Event streaming|`event\_streaming/`|Explicitly labeled Kafka-compatible simulation; no broker claim|
 |Event evidence|`evidence/event\_stream\_log.csv`|Runtime-generated; simulation status labels are explicit|
 |Security evidence|`evidence/security\_event\_log.csv`|Runtime-generated from detected conditions|
-|Control tower|`dashboard/app.py`|Streamlit UI; syntax checked in validation environment|
+|Control tower|`dashboard/app.py`|Streamlit UI; Docker runtime-verified in Windows environment; runtime evidence preserved in evidence/docker_compose_build.txt|
 |Automated validation|`tests/`, `run\_validation.py`|Pytest XML + console evidence|
 |Docker|`docker/`, `docker-compose.yml`|API + dashboard containers only; no Kafka/Fabric deployment claim|
 
